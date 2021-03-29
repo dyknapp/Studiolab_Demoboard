@@ -1,2 +1,6 @@
-Studiolab_Demoboard
-This is a test!
+# Studiolab Soldering Demo Project
+
+## Changes to be made for the second board:
+- Remove-up resistors from pushbuttons.
+- Fix potentiometer config
+- Change RGB LED to common cathode (?)
