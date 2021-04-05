@@ -1,6 +1,6 @@
 # Studiolab Soldering Demo Project
 
-##  How to run everthing on you won board
+##  How to run everthing on your own board
 - Download OS.py, programs.txt, Count_Demo.py to raspberry pi pico
 - On powerup, twist pot 1 until the board displays  1 in binary.
 - Press the leftmost button to choose program 1 to run (in this case Count_Demo.py)
