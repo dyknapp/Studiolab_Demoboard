@@ -4,3 +4,4 @@
 - Remove-up resistors from pushbuttons.
 - Fix potentiometer config
 - Change RGB LED to common cathode (?)
+- Move side connectors so boards can be flush
