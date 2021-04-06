@@ -34,42 +34,42 @@ def BinaryDisplay(num, its):
 
 # -------------------------------------------
 
-setting = 0
-inv_sensitivity = 1024
 while True:
-    utime.sleep(0.05)
-    prevsetting = setting
-    setting = pot1.read_u16()
-    if abs(setting - prevsetting) > 100:
-        BinaryDisplay(round(setting / inv_sensitivity), 0)
+    setting = 0
+    inv_sensitivity = 1024
+    while True:
+        utime.sleep(0.05)
+        prevsetting = setting
+        setting = pot1.read_u16()
+        if abs(setting - prevsetting) > inv_sensitivity / 4:
+            BinaryDisplay(round(setting / inv_sensitivity), 0)
         
-    if not buttons[0].value():
-        break
-
-
-
-f = open("programs.txt", "r")
-directory = f.read()
-
-i = 0
-progname = ""
-prognum = ""
-searchnum = str(round(setting / inv_sensitivity))
-while i < len(directory):
-    if directory[i] == ":":
-        i += 1
-        while directory[i] != "*" and i < len(directory):
-            prognum += directory[i]
-            i += 1
-        if searchnum == prognum:
+        if not buttons[0].value():
             break
-        else:
-            i += 2
-            progname = ""
-    prognum = ""
-    progname += directory[i]
-    i += 1
-    
-print(progname)
 
-program_to_run = __import__(progname)
+    f = open("programs.txt", "r")
+    directory = f.read()
+
+    i = 0
+    progname = ""
+    prognum = ""
+    searchnum = str(round(setting / inv_sensitivity))
+    while i < len(directory):
+        if directory[i] == ":":
+            i += 1
+            while directory[i] != "*" and i < len(directory):
+                prognum += directory[i]
+                i += 1
+            if searchnum == prognum:
+                break
+            else:
+                i += 2
+                progname = ""
+        prognum = ""
+        progname += directory[i]
+        i += 1
+    
+    print(progname)
+
+    program_to_run = __import__(progname)
+
