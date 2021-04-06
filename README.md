@@ -11,3 +11,9 @@
 - Fix potentiometer config
 - Change RGB LED to common cathode (?)
 - Move side connectors so boards can be flush
+
+## Program 1: Binary Counter (Count_Demo.py)
+Twist pot 0 to change speed.  Press leftmost button to reset count.
+
+## Program 2: RGB Color Selector (RGBcolors.py)
+Use pot 0 to select the brightnesses of red, green, and blue components.  Press leftmost button to select the setting for each color.  After the three magnitudes are selected, the RGB LED will disply the resultant color.  Press leftmost button to select another color.

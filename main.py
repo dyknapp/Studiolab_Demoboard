@@ -34,21 +34,46 @@ def BinaryDisplay(num, its):
     else:
         leds[7 - its].off()
 
-# -------------------------------------------
+def ClearLEDs():
+    for j in range(8):
+        leds[j].off()
 
-while True:
-    board_led.on()
+def SelectBinary(inv_sensitivity):
     setting = 0
-    inv_sensitivity = 1024
     while True:
         utime.sleep(0.05)
         prevsetting = setting
-        setting = pot1.read_u16()
+        setting = pot0.read_u16()
         if abs(setting - prevsetting) > inv_sensitivity / 4:
             BinaryDisplay(round(setting / inv_sensitivity), 0)
         
         if not buttons[0].value():
-            break
+            return round(setting / inv_sensitivity)
+
+def GetButtonInput():
+    input = (15 - int(buttons[3].value())\
+                        - 2 * int(buttons[2].value())\
+                        - 4 * int(buttons[1].value())\
+                        - 8 * int(buttons[0].value()))
+    return input
+
+def WaitNoInput(BufferTime):
+    while True:
+        utime.sleep(0.05)
+        if GetButtonInput() == 0:
+            utime.sleep(BufferTime)
+            if GetButtonInput() == 0:
+                return 0
+
+
+# -------------------------------------------
+
+while True:
+    board_led.on()
+    inv_sensitivity = 1024
+    searchnum = str(SelectBinary(inv_sensitivity))
+    WaitNoInput(0.05)
+    print(searchnum)
 
     f = open("programs.txt", "r")
     directory = f.read()
@@ -56,7 +81,6 @@ while True:
     i = 0
     progname = ""
     prognum = ""
-    searchnum = str(round(setting / inv_sensitivity))
     while i < len(directory):
         if directory[i] == ":":
             i += 1
@@ -66,7 +90,7 @@ while True:
             if searchnum == prognum:
                 break
             else:
-                i += 2
+                i += 3
                 progname = ""
         prognum = ""
         progname += directory[i]
@@ -76,4 +100,3 @@ while True:
     
     board_led.off()
     program_to_run = __import__(progname)
-
