@@ -21,6 +21,8 @@ for x in range(len(buttons)):
 pot0 = ADC(26)
 pot1 = ADC(27)
 
+board_led = Pin(25, Pin.OUT)
+
 def BinaryDisplay(num, its):
     #clear
     for x in range(8):
@@ -35,6 +37,7 @@ def BinaryDisplay(num, its):
 # -------------------------------------------
 
 while True:
+    board_led.on()
     setting = 0
     inv_sensitivity = 1024
     while True:
@@ -70,6 +73,7 @@ while True:
         i += 1
     
     print(progname)
-
+    
+    board_led.off()
     program_to_run = __import__(progname)
 
