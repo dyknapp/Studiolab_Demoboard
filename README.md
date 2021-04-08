@@ -10,7 +10,9 @@
 - Remove-up resistors from pushbuttons.
 - Fix potentiometer config
 - Change RGB LED to common cathode (?)
-- Move side connectors so boards can be flush
+- Move side connectors so boards can be flush - female-female only
+- Photosensor
+- Rubber feet at each corner - silkscreen circles on back
 
 ## Program 1: Binary Counter (Count_Demo.py)
 Twist pot 0 to change speed.  Press leftmost button to reset count.
