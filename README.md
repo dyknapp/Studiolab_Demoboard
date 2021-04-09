@@ -14,8 +14,17 @@
 - Photosensor
 - Rubber feet at each corner - silkscreen circles on back
 
+## Program 1: bTest.py
+Original test program
+
 ## Program 1: Binary Counter (Count_Demo.py)
 Twist pot 0 to change speed.  Press leftmost button to reset count.
 
 ## Program 2: RGB Color Selector (RGBcolors.py)
 Use pot 0 to select the brightnesses of red, green, and blue components.  Press leftmost button to select the setting for each color.  After the three magnitudes are selected, the RGB LED will disply the resultant color.  Press leftmost button to select another color.
+
+## Program 3: UART sending demo
+Sends the value of the potentiometer binary setting from both connections.
+
+## Program 4: UART receiving demo
+Receives data on UART0 (right hand connector) and displays on LEDs.
